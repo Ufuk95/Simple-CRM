@@ -5,17 +5,29 @@ export class User {
     birthDate!: number;
     street!: string;
     zipCode!: number;
-    city!: string; 
+    city!: string;
 
 
-    constructor(obj?: any){
-        this.firstName = obj ? obj.firstName: "";
-        this.lastname = obj ? obj.lastname: "";
-        this.email = obj ? obj.email: "";
-        this.birthDate = obj ? obj.birthDate: "";
-        this.street = obj ? obj.street: "";
-        this.zipCode = obj ? obj.zipCode: "";
-        this.city = obj ? obj.city: "";
-  
+    constructor(obj?: any) {
+        this.firstName = obj ? obj.firstName : "";
+        this.lastname = obj ? obj.lastname : "";
+        this.email = obj ? obj.email : "";
+        this.birthDate = obj ? obj.birthDate : "";
+        this.street = obj ? obj.street : "";
+        this.zipCode = obj ? obj.zipCode : "";
+        this.city = obj ? obj.city : "";
+
+    }
+
+    public toJSON() {
+        return {
+            firstName: this.birthDate,
+            lastname: this.lastname,
+            email: this.email,
+            birthDate: this.birthDate,
+            street: this.street,
+            zipCode: this.zipCode,
+            city:  this.city
+        }
     }
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,7 +8,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
-import { collection, doc, Firestore, getDocs } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs } from '@angular/fire/firestore';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -22,6 +23,7 @@ import { collection, doc, Firestore, getDocs } from '@angular/fire/firestore';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    MatProgressBarModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
@@ -33,46 +35,31 @@ export class DialogAddUserComponent {
 
   user: User = new User();
   birthDate!: Date;
+  loading = false;
 
-  constructor() {
-    this.checkFirebaseConnection();  // Überprüfe die Verbindung bei Initialisierung
+  constructor(public dialog: MatDialogRef<DialogAddUserComponent>) {
+
   }
 
   onNoClick() {
   }
 
-  saveUser() {
-    if (this.birthDate) {
-      this.user.birthDate = this.birthDate.getTime();
-      console.log("current user: ", this.user);
-    } else {
-      console.log("current user: ", this.user);
-    }
+  async saveUser() {
+    this.user.birthDate = this.birthDate.getTime();
+    this.loading = true;
+    await addDoc(this.getUserRef(), this.user.toJSON());
+    this.loading = false;
+    this.dialog.close();
   }
 
-  getTestRef() {
-    return collection(this.firestore, 'test');
+
+  getUserRef() {
+    return collection(this.firestore, 'user');
   }
+
 
   getSingleDocRef(colId: string, docId: string) {
     return doc(collection(this.firestore, colId), docId);
   }
 
-  // Methode, um Firebase-Verbindung zu überprüfen
-  async checkFirebaseConnection() {
-    try {
-      const testRef = this.getTestRef();
-      const snapshot = await getDocs(testRef);
-      snapshot.forEach((doc) => {
-        console.log(`${doc.id} =>`, doc.data());
-      });
-      if (snapshot.empty) {
-        console.log('No matching documents.');
-      } else {
-        console.log('Firebase connection successful.');
-      }
-    } catch (error) {
-      console.error('Error connecting to Firebase:', error);
-    }
-  }
 }

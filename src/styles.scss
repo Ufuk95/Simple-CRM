@@ -75,3 +75,8 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Progressbar Color */
+.mdc-linear-progress__bar-inner {
+  border-color: green !important;
+}
