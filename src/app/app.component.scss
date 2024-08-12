@@ -1,0 +1,97 @@
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    background-color: rgb(1 45 1 / 90%);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #00d400;
+}
+
+.mat-drawer-container {
+    height: 100vh;
+}
+
+.mat-drawer {
+    border-right: 1px solid #00d400;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+.matToolbar {
+    font-size: 20px;
+}
+
+.example-sidenav {
+    background-color: rgb(1 45 1 / 90%);
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.burgerMenu {
+    background-color: transparent;
+    color: white;
+    border-radius: 20px;
+    padding: 4px;
+    border: none;
+
+    &:hover {
+        background-color: rgba(245, 222, 179, 0.145);
+        cursor: pointer;
+    }
+}
+
+.mat-icon {
+    display: flex;
+}
+
+.logo-container {
+    border-bottom: 1px solid #00d400;
+    padding: 16px;
+    min-height: 67px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+span {
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+
+    li {
+        padding-left: 16px;
+        padding-right: 16px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-size: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: white;
+
+        &:hover {
+            background-color: rgba(0, 51, 34, 0.5);
+            border-radius: 20px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.router-container {
+    padding-top: 16px;
+    padding-left: 40px;
+    background-color: rgba(3, 17, 0, 0.9);
+    height: calc(100vh - 100px);
+    width: 100%;
+    box-sizing: border-box;
+    color: white;
+}

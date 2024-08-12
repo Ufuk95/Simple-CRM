@@ -1,0 +1,72 @@
+<div>
+    <p>dialog-add-user works! (css is in styles.scss)</p>
+
+
+    <h2 mat-dialog-title>Add user</h2>
+
+    <div class="d-flex">
+        <mat-dialog-content>
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input [(ngModel)]="user.firstName" matInput placeholder="1st name">
+            </mat-form-field>
+        </mat-dialog-content>
+    
+        <mat-dialog-content>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input [(ngModel)]="user.lastname" matInput placeholder="2nd name">
+            </mat-form-field>
+        </mat-dialog-content>
+    </div>
+
+    <div>
+        <mat-dialog-content>
+            <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>E-mail</mat-label>
+                <input [(ngModel)]="user.email" matInput placeholder="email adress">
+            </mat-form-field>
+        </mat-dialog-content>
+    </div>
+   
+    <div class="d-flex">
+        <mat-dialog-content>
+            <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>Birthdate</mat-label>
+                <input [(ngModel)]="birthDate" matInput placeholder="birthdate" [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </mat-dialog-content>
+    </div>
+
+    <div>
+        <mat-dialog-content>
+            <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>Address + Nr.</mat-label>
+                <input [(ngModel)]="user.street" matInput placeholder="Placeholder">
+            </mat-form-field>
+        </mat-dialog-content>
+    </div>
+
+    <div class="d-flex">
+        <mat-dialog-content>
+            <mat-form-field appearance="outline">
+                <mat-label>Zip Code</mat-label>
+                <input [(ngModel)]="user.zipCode" matInput placeholder="Placeholder">
+            </mat-form-field>
+        </mat-dialog-content>
+
+        <mat-dialog-content>
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input [(ngModel)]="user.city" matInput placeholder="Placeholder">
+            </mat-form-field>
+        </mat-dialog-content>
+    </div>
+
+    <mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="saveUser()" cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
+</div>
