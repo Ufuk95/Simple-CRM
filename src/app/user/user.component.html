@@ -8,8 +8,8 @@
             </tr>
 
 
-            <tr *ngFor="let user of allUsers">
-                <td>{{ user.firstName }}  {{ user.lastname }}</td>
+            <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
+                <td>{{ user.firstName }}  {{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.city }}</td>
             </tr>

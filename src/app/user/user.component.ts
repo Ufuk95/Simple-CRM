@@ -8,6 +8,7 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 import { MatCardModule } from '@angular/material/card';
 import { Firestore, collectionData, collection, doc } from '@angular/fire/firestore';  // Wichtig: Richtig importieren
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -19,6 +20,7 @@ import { Observable } from 'rxjs';
     MatTooltipModule,
     MatDialogModule,
     MatCardModule,
+    RouterLink,
   ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']

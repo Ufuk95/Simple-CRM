@@ -1,6 +1,6 @@
 export class User {
     firstName!: string;
-    lastname!: string;
+    lastName!: string;
     email!: string;
     birthDate!: number;
     street!: string;
@@ -10,7 +10,7 @@ export class User {
 
     constructor(obj?: any) {
         this.firstName = obj ? obj.firstName : "";
-        this.lastname = obj ? obj.lastname : "";
+        this.lastName = obj ? obj.lastName : "";
         this.email = obj ? obj.email : "";
         this.birthDate = obj ? obj.birthDate : "";
         this.street = obj ? obj.street : "";
@@ -22,7 +22,7 @@ export class User {
     public toJSON() {
         return {
             firstName: this.firstName,
-            lastname: this.lastname,
+            lastName: this.lastName,
             email: this.email,
             birthDate: this.birthDate,
             street: this.street,

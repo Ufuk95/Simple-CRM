@@ -41,8 +41,6 @@ export class DialogAddUserComponent {
 
   }
 
-  onNoClick() {
-  }
 
   async saveUser() {
     this.user.birthDate = this.birthDate.getTime();
