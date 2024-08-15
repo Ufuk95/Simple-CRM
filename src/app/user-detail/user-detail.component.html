@@ -1,6 +1,14 @@
 <mat-card class="user-detail-header">
     <img src="/img/male.png" alt="">
 
+    <button mat-icon-button class="btn-position" [matMenuTriggerFor]="userMenu">
+        <mat-icon>more_horiz</mat-icon>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="editUserDetail()">Edit</button>
+    </mat-menu>
+
     <div>
         <h3>{{user.firstName}} {{user.lastName}}</h3>
         <p>{{user.email}}</p>
@@ -9,6 +17,15 @@
 
 
 <mat-card class="user-address">
+
+    <button mat-icon-button class="btn-position" [matMenuTriggerFor]="addressMenu">
+        <mat-icon>more_horiz</mat-icon>
+    </button>
+
+    <mat-menu #addressMenu="matMenu">
+        <button mat-menu-item (click)="editAddressDetail()">Edit</button>
+    </mat-menu>
+
     <mat-card-header>
         <mat-card-title>Address</mat-card-title>
     </mat-card-header>
@@ -16,6 +33,5 @@
     <mat-card-content>
         {{user.street}} <br>
         {{user.zipCode}} {{user.city}}
-
     </mat-card-content>
 </mat-card>

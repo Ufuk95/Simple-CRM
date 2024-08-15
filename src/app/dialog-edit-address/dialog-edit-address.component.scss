@@ -1,0 +1,21 @@
+div {
+    h2 {
+        color: white;
+    }
+
+    mat-dialog-content,
+    mat-dialog-actions {
+        color: white;
+    }
+
+    input {
+        color: white !important;
+    }
+
+    mat-progress-bar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+    };
+}

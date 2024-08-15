@@ -4,12 +4,22 @@ import { collection, doc, docData, Firestore } from '@angular/fire/firestore';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.class';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
   imports: [
     MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss'] // Korrigiert von "styleUrl" zu "styleUrls"
@@ -22,7 +32,8 @@ export class UserDetailComponent implements OnInit {
   users$!: Observable<any[]>;
   user: User = new User();
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, public dialog: MatDialog) { }
+ 
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -38,8 +49,18 @@ export class UserDetailComponent implements OnInit {
       this.user = new User(user);
       console.log('Retrieved user: ', this.user)
     })
-
   }
+
+  editAddressDetail() {
+    const dialogRef = this.dialog.open(DialogEditAddressComponent);
+    dialogRef.componentInstance.user = new User(this.user.toJSON());
+  }
+
+  editUserDetail() {
+    const dialogRef = this.dialog.open(DialogEditUserComponent);
+    dialogRef.componentInstance.user = new User(this.user.toJSON());
+  }
+
 
   getUserRef() {
     return collection(this.firestore, 'user');

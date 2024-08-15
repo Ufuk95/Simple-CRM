@@ -26,6 +26,20 @@
 }
 
 .user-address {
+    position: relative;
     background-color: #016a3b;
     margin-top: 32px;
+}
+
+
+.btn-position {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    color: white;
+
+    &:hover {
+        background-color: rgb(1, 125, 88);
+        border-radius: 20px;
+    }
 }
