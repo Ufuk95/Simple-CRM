@@ -8,7 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
-import { addDoc, collection, doc, Firestore, getDocs } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs, updateDoc } from '@angular/fire/firestore';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
@@ -24,6 +24,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     FormsModule,
     MatProgressBarModule,
   ],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-edit-user.component.html',
   styleUrl: './dialog-edit-user.component.scss'
 })
@@ -32,7 +33,8 @@ export class DialogEditUserComponent {
   loading = false;
   user!: User;
   birthDate!: Date;
-
+  firestore: Firestore = inject(Firestore);
+  userId!: string;
 
 
 
@@ -40,8 +42,26 @@ export class DialogEditUserComponent {
 
   }
 
-  saveUser(){
+  saveUser() {
+    this.loading = true;
+    const userDocRef = this.getSingleDocRef('user', this.userId);
 
+    updateDoc(userDocRef, this.user.toJSON()).then(() => {
+      console.log('User updated successfully');
+      this.loading = false;
+      this.dialog.close();
+    }).catch((error) => {
+      console.error('Error updating user: ', error);
+      this.loading = false;
+    });
+  }
+
+  getUserRef() {
+    return collection(this.firestore, 'user');
+  }
+
+  getSingleDocRef(colId: string, docId: string) {
+    return doc(collection(this.firestore, colId), docId);
   }
 
 }
