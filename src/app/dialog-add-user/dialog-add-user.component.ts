@@ -27,7 +27,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
-  styleUrls: ['./dialog-add-user.component.scss'] // Korrektur: 'styleUrl' auf 'styleUrls' geändert
+  styleUrls: ['./dialog-add-user.component.scss'] 
 })
 export class DialogAddUserComponent {
 

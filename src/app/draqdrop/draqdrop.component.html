@@ -1,0 +1,23 @@
+<div class="searchContainer">
+    <div class="search-container">
+        <input class="input-search" placeholder="Search" type="text">
+        <button class="search-btn">
+            <img src="">
+        </button>
+    </div>
+</div>
+
+<div class="kanbanContainer">
+    <div class="kanbanRow" *ngFor="let column of columns; let i = index">
+        <h2>{{ column.name }}</h2>
+        <div class="kanbanList" cdkDropList [id]="'list-' + i" [cdkDropListData]="column.tasks" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="connectedTo">
+            <div class="kanbanItem" *ngFor="let task of column.tasks" cdkDrag>
+                {{ task.name }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<button (click)="openDialog()" mat-fab class="btn-position" matTooltip="Add Task" matTooltipPosition="above">
+    <mat-icon class="add-btn">add</mat-icon>
+</button>

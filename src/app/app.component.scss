@@ -91,7 +91,7 @@ ul {
     padding-left: 40px;
     padding-right: 40px;
     background-color: rgba(3, 17, 0, 0.9);
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
     width: 100%;
     box-sizing: border-box;
     color: white;

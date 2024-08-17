@@ -1,0 +1,93 @@
+// .kanbanContainer {
+//     display: flex;
+//     justify-content: space-evenly;
+//     align-items: center;
+
+
+//     .kanbanRow {
+//         border: 3px solid black;
+//         padding: 8px 20px 8px 20px;
+//         border-radius: 20px;
+//         width: 200px;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         background-color: rgba(0, 0, 0, 0.578);
+//         color: rgb(255, 38, 0);
+//     }
+
+//     h2 {
+//         margin-block-end: 0;    
+//     }
+// }
+
+.searchContainer {
+    position: absolute;
+    top: 39px;
+    left: 45%;
+}
+
+h2 {
+    margin-block-end: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kanbanContainer {
+    display: flex;
+    gap: 20px;
+    padding: 8px 20px 8px 20px;
+}
+
+.kanbanRow {
+    flex: 1;
+    background-color: #000000d2;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.kanbanList {
+    min-height: 300px;
+    background-color: #124f11;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.kanbanItem {
+    background-color: #057a7a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: grab;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-btn {
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+    width: 12px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+
+    &:hover {
+        background-color: rgba(245, 222, 179, 0.7);
+    }
+}
+
+
+.btn-position {
+    position: absolute;
+    bottom: 36px;
+    right: 36px;
+    border-radius: 30px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: none;
+}

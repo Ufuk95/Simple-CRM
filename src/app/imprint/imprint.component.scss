@@ -1,0 +1,12 @@
+a {
+    color: orange;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.impressum {
+    padding-bottom: 20px;
+}
