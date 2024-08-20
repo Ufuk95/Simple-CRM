@@ -1,1 +1,39 @@
-<p>kanbanwork works!</p>
+<div>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <h2 mat-dialog-title>Work to do</h2>
+
+    <div class="d-flex">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput [disabled]="loading" [(ngModel)]="work.description"></textarea>
+        </mat-form-field>
+
+        <div class="optionArea">
+            <mat-form-field>
+                <mat-label>Martial Art</mat-label>
+                <mat-select [(ngModel)]="work.martialArt" [disabled]="loading">
+                    <mat-option value="wrestling">Wrestling</mat-option>
+                    <mat-option value="mma-striking">MMA Striking</mat-option>
+                    <mat-option value="kick-thai-box">Kick/Thai Box</mat-option>
+                    <mat-option value="sparring">Sparring</mat-option>
+                    <mat-option value="mma-grappling">MMA Grappling</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Coach</mat-label>
+                <mat-select [(ngModel)]="work.coach" [disabled]="loading">
+                    <mat-option value="trainer1">Trainer 1</mat-option>
+                    <mat-option value="trainer2">Trainer 2</mat-option>
+                    <mat-option value="trainer3">Trainer 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <mat-dialog-actions>
+            <button [disabled]="loading" mat-button (click)="this.dialog.close();">Cancel</button>
+            <button [disabled]="loading" mat-button (click)="saveWork()" cdkFocusInitial>Save</button>
+        </mat-dialog-actions>
+    </div>
+</div>

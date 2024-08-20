@@ -8,11 +8,54 @@
 </div>
 
 <div class="kanbanContainer">
-    <div class="kanbanRow" *ngFor="let column of columns; let i = index">
-        <h2>{{ column.name }}</h2>
-        <div class="kanbanList" cdkDropList [id]="'list-' + i" [cdkDropListData]="column.tasks" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="connectedTo">
-            <div class="kanbanItem" *ngFor="let task of column.tasks" cdkDrag>
-                {{ task.name }}
+    <div class="kanbanRow">
+        <h2>To do</h2>
+        <div class="kanbanList" cdkDropList id="todo" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="todoTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem" *ngFor="let task of todoTasks" cdkDrag>
+                <div>
+                    <h3>{{ task.martialArt }}</h3>
+                    <h3>{{ task.coach }}</h3>
+                </div>
+                {{ task.description }}
+            </div>
+        </div>
+    </div>
+
+    <div class="kanbanRow">
+        <h2>Waiting</h2>
+        <div class="kanbanList" cdkDropList id="waiting" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="waitingTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem" *ngFor="let task of waitingTasks" cdkDrag>
+                <div>
+                    <h3>{{ task.martialArt }}</h3>
+                    <h3>{{ task.coach }}</h3>
+                </div>
+                {{ task.description }}
+            </div>
+        </div>
+    </div>
+
+    <div class="kanbanRow">
+        <h2>Treatment</h2>
+        <div class="kanbanList" cdkDropList id="treatment" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="treatmentTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem" *ngFor="let task of treatmentTasks" cdkDrag>
+                <div>
+                    <h3>{{ task.martialArt }}</h3>
+                    <h3>{{ task.coach }}</h3>
+                </div>
+                {{ task.description }}
+            </div>
+        </div>
+    </div>
+
+    <div class="kanbanRow">
+        <h2>Done</h2>
+        <div class="kanbanList" cdkDropList id="done" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="doneTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem" *ngFor="let task of doneTasks" cdkDrag>
+                <div>
+                    <h3>{{ task.martialArt }}</h3>
+                    <h3>{{ task.coach }}</h3>
+                </div>
+                {{ task.description }}
             </div>
         </div>
     </div>
