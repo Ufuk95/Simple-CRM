@@ -1,20 +1,11 @@
-<div class="searchContainer">
-    <div class="search-container">
-        <input class="input-search" placeholder="Search" type="text">
-        <button class="search-btn">
-            <img src="">
-        </button>
-    </div>
-</div>
-
 <div class="kanbanContainer">
     <div class="kanbanRow">
         <h2>To do</h2>
         <div class="kanbanList" cdkDropList id="todo" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="todoTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem" *ngFor="let task of todoTasks" cdkDrag>
+            <div class="kanbanItem bg-todo" *ngFor="let task of todoTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
-                    <h3>{{ task.coach }}</h3>
+                    <h4>{{ task.coach }}</h4>
                 </div>
                 {{ task.description }}
             </div>
@@ -24,10 +15,10 @@
     <div class="kanbanRow">
         <h2>Waiting</h2>
         <div class="kanbanList" cdkDropList id="waiting" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="waitingTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem" *ngFor="let task of waitingTasks" cdkDrag>
+            <div class="kanbanItem bg-waiting" *ngFor="let task of waitingTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
-                    <h3>{{ task.coach }}</h3>
+                    <h4>{{ task.coach }}</h4>
                 </div>
                 {{ task.description }}
             </div>
@@ -37,12 +28,13 @@
     <div class="kanbanRow">
         <h2>Treatment</h2>
         <div class="kanbanList" cdkDropList id="treatment" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="treatmentTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem" *ngFor="let task of treatmentTasks" cdkDrag>
+            <div class="kanbanItem bg-treat" *ngFor="let task of treatmentTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
-                    <h3>{{ task.coach }}</h3>
+                    <h4>{{ task.coach }}</h4>
                 </div>
-                {{ task.description }}
+                <span>{{ task.description }}</span>
+                
             </div>
         </div>
     </div>
@@ -50,14 +42,23 @@
     <div class="kanbanRow">
         <h2>Done</h2>
         <div class="kanbanList" cdkDropList id="done" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="doneTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem" *ngFor="let task of doneTasks" cdkDrag>
+            <div class="kanbanItem bg-done" *ngFor="let task of doneTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
-                    <h3>{{ task.coach }}</h3>
+                    <h4>{{ task.coach }}</h4>
                 </div>
                 {{ task.description }}
             </div>
         </div>
+    </div>
+
+    
+</div>
+
+<div class="kanbanRow delete">
+    <h2>Lösch Eimer</h2>
+    <div class="kanbanList delete-bin" cdkDropList id="delete-bin" (cdkDropListDropped)="deleteTask($event)">
+        <p>Element hierhin ziehen, um es zu löschen</p>
     </div>
 </div>
 

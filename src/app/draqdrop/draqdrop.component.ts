@@ -9,6 +9,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { KanbanItem } from '../../models/kanban.class';
 import { collection, collectionData, Firestore, updateDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
+import { deleteDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-draqdrop',
@@ -18,7 +20,8 @@ import { Observable } from 'rxjs';
     DragDropModule,
     MatDialogModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    RouterLink
   ],
   templateUrl: './draqdrop.component.html',
   styleUrl: './draqdrop.component.scss'
@@ -33,7 +36,7 @@ export class DraqdropComponent implements OnInit {
   treatmentTasks: KanbanItem[] = [];
   doneTasks: KanbanItem[] = [];
 
-  connectedTo = ['todo', 'waiting', 'treatment', 'done'];
+  connectedTo = ['todo', 'waiting', 'treatment', 'done', 'delete-bin'];
 
   constructor(public dialog: MatDialog){}
 
@@ -78,6 +81,21 @@ export class DraqdropComponent implements OnInit {
   updateTaskPosition(task: KanbanItem) {
     const taskDocRef = doc(this.firestore, `work/${task.id}`);
     updateDoc(taskDocRef, { position: task.position });
+  }
+
+  deleteTask(event: CdkDragDrop<any[]>) {
+    const task = event.previousContainer.data[event.previousIndex];
+    
+    if (task.id) {
+      const taskDocRef = doc(this.firestore, `work/${task.id}`);
+      deleteDoc(taskDocRef).then(() => {
+        // Optional: Entferne die Aufgabe aus der lokalen Liste, um die UI zu aktualisieren
+        event.previousContainer.data.splice(event.previousIndex, 1);
+        console.log('Task deleted:', task);
+      }).catch(error => {
+        console.error('Error deleting task:', error);
+      });
+    }
   }
 
   getWorkRef() {
