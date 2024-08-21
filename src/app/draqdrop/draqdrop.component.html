@@ -1,8 +1,8 @@
 <div class="kanbanContainer">
     <div class="kanbanRow">
-        <h2>To do</h2>
-        <div class="kanbanList" cdkDropList id="todo" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="todoTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-todo" *ngFor="let task of todoTasks" cdkDrag>
+        <h2>Ruslan</h2>
+        <div class="kanbanList" cdkDropList id="Ruslan" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="ruslanTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-todo" *ngFor="let task of ruslanTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
                     <h4>{{ task.coach }}</h4>
@@ -11,48 +11,47 @@
             </div>
         </div>
     </div>
-
-    <div class="kanbanRow">
-        <h2>Waiting</h2>
-        <div class="kanbanList" cdkDropList id="waiting" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="waitingTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-waiting" *ngFor="let task of waitingTasks" cdkDrag>
-                <div>
-                    <h3>{{ task.martialArt }}</h3>
-                    <h4>{{ task.coach }}</h4>
-                </div>
-                {{ task.description }}
-            </div>
-        </div>
-    </div>
-
-    <div class="kanbanRow">
-        <h2>Treatment</h2>
-        <div class="kanbanList" cdkDropList id="treatment" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="treatmentTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-treat" *ngFor="let task of treatmentTasks" cdkDrag>
-                <div>
-                    <h3>{{ task.martialArt }}</h3>
-                    <h4>{{ task.coach }}</h4>
-                </div>
-                <span>{{ task.description }}</span>
-                
-            </div>
-        </div>
-    </div>
-
-    <div class="kanbanRow">
-        <h2>Done</h2>
-        <div class="kanbanList" cdkDropList id="done" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="doneTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-done" *ngFor="let task of doneTasks" cdkDrag>
-                <div>
-                    <h3>{{ task.martialArt }}</h3>
-                    <h4>{{ task.coach }}</h4>
-                </div>
-                {{ task.description }}
-            </div>
-        </div>
-    </div>
-
     
+    <div class="kanbanRow">
+        <h2>Mario</h2>
+        <div class="kanbanList" cdkDropList id="Mario" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="marioTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-waiting" *ngFor="let task of marioTasks" cdkDrag>
+                <div>
+                    <h3>{{ task.martialArt }}</h3>
+                    <h4>{{ task.coach }}</h4>
+                </div>
+                {{ task.description }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="kanbanRow">
+        <h2>Jean</h2>
+        <div class="kanbanList" cdkDropList id="Jean" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="jeanTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-treat" *ngFor="let task of jeanTasks" cdkDrag>
+                <div>
+                    <h3>{{ task.martialArt }}</h3>
+                    <h4>{{ task.coach }}</h4>
+                </div>
+                {{ task.description }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="kanbanRow">
+        <h2>Johann</h2>
+        <div class="kanbanList" cdkDropList id="Johann" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="johannTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-done" *ngFor="let task of johannTasks" cdkDrag>
+                <div>
+                    <h3>{{ task.martialArt }}</h3>
+                    <h4>{{ task.coach }}</h4>
+                </div>
+                {{ task.description }}
+            </div>
+        </div>
+    </div>
+    
+
 </div>
 
 <div class="kanbanRow delete">

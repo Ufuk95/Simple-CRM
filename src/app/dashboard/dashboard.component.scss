@@ -27,3 +27,65 @@
     font-size: 14px;
     background-color: rgb(5, 139, 0);
 }
+
+
+.clock {
+    width: 200px;
+    height: 200px;
+    border: 10px solid black;
+    border-radius: 50%;
+    position: absolute;
+    margin: 50px auto;
+    bottom: 20px;
+    right: 20px;
+
+    .clock-face {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: translateY(-3px);
+    }
+
+    .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+        transition-timing-function: ease-in-out;
+    }
+
+    .hour-hand {
+        height: 8px;
+        background: black;
+    }
+
+    .minute-hand {
+        height: 6px;
+        background: black;
+    }
+
+    .second-hand {
+        height: 4px;
+        background: red;
+    }
+}
+
+.infoButton {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.trainingDay {
+    position: absolute;
+    bottom: 100px;
+}
+
+.dayOfTheWeek {
+    display: flex;
+    gap: 10px;
+}

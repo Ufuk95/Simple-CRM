@@ -7,10 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { KanbanworkComponent } from '../kanbanwork/kanbanwork.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { KanbanItem } from '../../models/kanban.class';
-import { collection, collectionData, Firestore, updateDoc, doc } from '@angular/fire/firestore';
+import { collection, collectionData, Firestore, updateDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { RouterLink } from '@angular/router';
-import { deleteDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-draqdrop',
@@ -20,8 +18,7 @@ import { deleteDoc } from '@angular/fire/firestore';
     DragDropModule,
     MatDialogModule,
     MatIconModule,
-    MatTooltipModule,
-    RouterLink
+    MatTooltipModule
   ],
   templateUrl: './draqdrop.component.html',
   styleUrl: './draqdrop.component.scss'
@@ -31,14 +28,14 @@ export class DraqdropComponent implements OnInit {
   work: KanbanItem = new KanbanItem();
   firestore: Firestore = inject(Firestore);
   works$!: Observable<any[]>;
-  todoTasks: KanbanItem[] = [];
-  waitingTasks: KanbanItem[] = [];
-  treatmentTasks: KanbanItem[] = [];
-  doneTasks: KanbanItem[] = [];
+  ruslanTasks: KanbanItem[] = [];
+  marioTasks: KanbanItem[] = [];
+  jeanTasks: KanbanItem[] = [];
+  johannTasks: KanbanItem[] = [];
 
-  connectedTo = ['todo', 'waiting', 'treatment', 'done', 'delete-bin'];
+  connectedTo = ['Ruslan', 'Mario', 'Jean', 'Johann', 'delete-bin'];
 
-  constructor(public dialog: MatDialog){}
+  constructor(public dialog: MatDialog) { }
 
   drop(event: CdkDragDrop<any[]>) {
     const previousPosition = event.previousContainer.id;
@@ -48,7 +45,7 @@ export class DraqdropComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       const item = event.previousContainer.data[event.previousIndex];
-      item.position = currentPosition; // Update the item's position
+      item.coach = currentPosition; // Update the coach field to reflect the new trainer
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -71,32 +68,42 @@ export class DraqdropComponent implements OnInit {
     this.works$ = collectionData(this.getWorkRef(), { idField: 'id' });
     this.works$.subscribe((changes: any) => {
       console.log('Received changes from DB ', changes);
-      this.todoTasks = changes.filter((task: KanbanItem) => task.position === 'todo');
-      this.waitingTasks = changes.filter((task: KanbanItem) => task.position === 'waiting');
-      this.treatmentTasks = changes.filter((task: KanbanItem) => task.position === 'treatment');
-      this.doneTasks = changes.filter((task: KanbanItem) => task.position === 'done');
+      this.ruslanTasks = changes.filter((task: KanbanItem) => task.coach === 'Ruslan');
+      this.marioTasks = changes.filter((task: KanbanItem) => task.coach === 'Mario');
+      this.jeanTasks = changes.filter((task: KanbanItem) => task.coach === 'Jean');
+      this.johannTasks = changes.filter((task: KanbanItem) => task.coach === 'Johann');
+
     });
   }
 
   updateTaskPosition(task: KanbanItem) {
     const taskDocRef = doc(this.firestore, `work/${task.id}`);
-    updateDoc(taskDocRef, { position: task.position });
+    updateDoc(taskDocRef, { coach: task.coach });
   }
 
   deleteTask(event: CdkDragDrop<any[]>) {
-    const task = event.previousContainer.data[event.previousIndex];
-    
-    if (task.id) {
-      const taskDocRef = doc(this.firestore, `work/${task.id}`);
-      deleteDoc(taskDocRef).then(() => {
-        // Optional: Entferne die Aufgabe aus der lokalen Liste, um die UI zu aktualisieren
-        event.previousContainer.data.splice(event.previousIndex, 1);
-        console.log('Task deleted:', task);
-      }).catch(error => {
-        console.error('Error deleting task:', error);
-      });
+    // Überprüfe, ob das Ereignis tatsächlich vom Lösch-Eimer stammt
+    if (event.container.id === 'delete-bin') {
+      const task = event.previousContainer.data[event.previousIndex];
+
+      if (task && task.id) {
+        const taskDocRef = doc(this.firestore, `work/${task.id}`);
+        deleteDoc(taskDocRef)
+          .then(() => {
+            // Entferne die Aufgabe aus der lokalen Liste, um die UI zu aktualisieren
+            event.previousContainer.data.splice(event.previousIndex, 1);
+            console.log('Task deleted:', task);
+          })
+          .catch(error => {
+            console.error('Error deleting task:', error);
+          });
+      } else {
+        console.error('Task or Task ID not found:', task);
+      }
     }
   }
+
+
 
   getWorkRef() {
     return collection(this.firestore, 'work');
