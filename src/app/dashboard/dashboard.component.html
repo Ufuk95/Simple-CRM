@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<mat-card class="demo-inline-calendar-card calender">
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+</mat-card>
+
+<button mat-raised-button [matBadge]="customCount" [matBadgeHidden]="customBadgeHidden" (click)="getCustomerCount()">
+    amount of customers
+</button>
+
+<button mat-raised-button [matBadge]="workCount" [matBadgeHidden]="workBadgeHidden" (click)="getWorkCount()">
+    amount of work
+</button>

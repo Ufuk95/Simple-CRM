@@ -159,3 +159,41 @@ body {
 .mdc-text-field--filled:not(.mdc-text-field--disabled):hover {
   border: 1px solid rgb(255, 191, 0);;
 }
+
+// date from add-user
+.mat-datepicker-content .mat-calendar {
+  background-color: grey;
+}
+
+// month of date 
+.mat-mdc-button:not(:disabled) {
+  color: white !important;
+}
+
+// left button for month
+.mat-calendar-previous-button::after {
+  color: white;
+}
+// right button for month
+.mat-calendar-next-button::after {
+  color: white;
+}
+
+// days of the week
+.mat-calendar-table-header th {
+  color: white !important;
+}
+
+// every day of the month
+.mat-calendar-body-cell-content.mat-focus-indicator {
+  color: white;
+}
+
+// name of the month 
+.mat-calendar-body-label {
+  color: white !important;
+}
+
+.mat-calendar-arrow {
+  fill: white !important;
+}
