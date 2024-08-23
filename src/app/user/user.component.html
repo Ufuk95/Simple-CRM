@@ -1,4 +1,5 @@
-<mat-card appearance="outlined">
+<!-- Erste Mat-Card, die auf kleinen Bildschirmen ausgeblendet wird -->
+<mat-card appearance="outlined" class="hide-on-small">
     <mat-card-content>
         <table class="user-table">
             <tr>
@@ -6,12 +7,46 @@
                 <th>E-mail</th>
                 <th>City</th>
             </tr>
-
-
             <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
                 <td>{{ user.firstName }}  {{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.city }}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<!-- Zweite Mat-Card, die auf kleinen Bildschirmen angezeigt wird -->
+<mat-card appearance="outlined" class="d-none show-on-small">
+    <mat-card-content>
+        <table class="responsive-table">
+            <tr class="responsiveTable">
+                <div class="infoDiv" *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
+                    <div class="userInformation">
+                        <div class="noUser">
+                            <th>Name:</th>
+                        </div>
+                        <div>
+                            <td>{{ user.firstName }}  {{ user.lastName }}</td>
+                        </div>
+                    </div>
+                    <div class="userInformation">
+                        <div class="noUser">
+                            <th>E-mail:</th>
+                        </div>
+                        <div>
+                            <td>{{ user.email }}</td>
+                        </div>
+                    </div>
+                    <div class="userInformation">
+                        <div class="noUser">
+                            <th>City:</th>
+                        </div>
+                        <div>
+                            <td>{{ user.city }}</td>
+                        </div>
+                    </div>
+                </div>
             </tr>
         </table>
     </mat-card-content>

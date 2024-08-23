@@ -27,12 +27,12 @@
 
 
 .mat-mdc-card-content {
-    background-color: #000a30fa;
+    background-color: black;
     border-radius: 10px;
 }
 
 .mat-mdc-card-outlined {
-    border: 2px solid darkcyan;
+    border: 2px solid darkred;
 }
 
 mat-card-content {
@@ -42,6 +42,9 @@ mat-card-content {
 }
 .mat-mdc-card-content:last-child {
     padding-bottom: 0;
+}
+.mat-mdc-card-content:first-child {
+    padding-top: 0;
 }
 
 .user-table {
@@ -79,5 +82,72 @@ mat-card-content {
             padding-left: 16px;
         }
     }
+}
 
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        &:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            height: 30px;
+
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+    }
+    th {
+        color: #ff6464;
+        text-align: start;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+    }
+}
+
+.d-none {
+    display: none !important;
+}
+
+
+.responsiveTable {
+    .infoDiv {
+        margin: 20px;
+        background-color: rgba(60, 56, 56, 0.613);
+        border-radius: 12px;
+        &:hover {
+            background-color: rgba(179, 200, 245, 0.3);
+            cursor: pointer;
+        }
+        
+
+        .userInformation{
+            display: flex;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.noUser {
+    width: 80px;
+}
+
+// RESPONSIVE
+
+    
+@media (min-width: 320px) and  (max-width: 700px) {
+    .hide-on-small {
+        display: none !important;
+    }
+
+    .show-on-small {
+        display: block !important;
+    }
 }

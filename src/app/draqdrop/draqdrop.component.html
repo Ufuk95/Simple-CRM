@@ -50,16 +50,17 @@
             </div>
         </div>
     </div>
-    
 
-</div>
-
-<div class="kanbanRow delete">
-    <h2>Lösch Eimer</h2>
-    <div class="kanbanList delete-bin" cdkDropList id="delete-bin" (cdkDropListDropped)="deleteTask($event)">
-        <p>Element hierhin ziehen, um es zu löschen</p>
+    <div class="kanbanRow delete">
+        <h2>Delete</h2>
+        <div class="kanbanList delete-bin" cdkDropList id="delete-bin" (cdkDropListDropped)="deleteTask($event)">
+            <p>Element hierhin ziehen, um es zu löschen</p>
+        </div>
     </div>
+
 </div>
+
+
 
 <button (click)="openDialog()" mat-fab class="btn-position" matTooltip="Add Task" matTooltipPosition="above">
     <mat-icon class="add-btn">add</mat-icon>

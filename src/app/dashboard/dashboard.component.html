@@ -1,8 +1,5 @@
-<div>
-    <div>
-        <mat-card class="demo-inline-calendar-card calender">
-            <mat-calendar [(selected)]="selected"></mat-calendar>
-        </mat-card>
+<div class="dashboard">
+    <div class="dashboardTop">
         
         <div class="infoButton">
             <button mat-raised-button [matBadge]="customCount" [matBadgeHidden]="customBadgeHidden"
@@ -14,10 +11,14 @@
                 amount of work
             </button>
         </div>
+
+        <mat-card class="demo-inline-calendar-card calender">
+            <mat-calendar [(selected)]="selected"></mat-calendar>
+        </mat-card>
     </div>
     
     
-    <div>
+    <div class="dashboardBottom">
         <div class="clock">
             <div class="clock-face">
                 <div #hourHand class="hand hour-hand"></div>
