@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { collection, doc, docData, Firestore } from '@angular/fire/firestore';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { collection, deleteDoc, doc, docData, Firestore } from '@angular/fire/firestore';
+import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.class';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,7 +19,8 @@ import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-a
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    RouterLink
   ],
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss'] // Korrigiert von "styleUrl" zu "styleUrls"
@@ -63,6 +64,14 @@ export class UserDetailComponent implements OnInit {
     dialogRef.componentInstance.userId = this.userId
   }
 
+  async deleteUser() {
+    if (this.userId) {
+      const userDocRef = doc(this.firestore, `user/${this.userId}`);
+      await deleteDoc(userDocRef);
+      console.log(`User with ID ${this.userId} deleted`);
+      // Optional: Redirect or update UI after deletion
+    }
+  }
 
   getUserRef() {
     return collection(this.firestore, 'user');

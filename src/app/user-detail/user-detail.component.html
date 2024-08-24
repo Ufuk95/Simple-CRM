@@ -5,6 +5,10 @@
         <mat-icon>more_horiz</mat-icon>
     </button>
 
+    <button mat-icon-button class="deleteButton" (click)="deleteUser()" [routerLink]="['/user/']">
+        <mat-icon>delete</mat-icon>
+    </button>
+
     <mat-menu #userMenu="matMenu">
         <button mat-menu-item (click)="editUserDetail()">Edit</button>
     </mat-menu>

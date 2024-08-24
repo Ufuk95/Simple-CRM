@@ -44,6 +44,18 @@
     }
 }
 
+.deleteButton {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    color: white;
+
+    &:hover {
+        background-color: rgb(1, 125, 88);
+        border-radius: 20px;
+    }
+}
+
 @media (min-width:320px) and (max-width: 435px) {
     .user-detail-header img {
         display: none;
