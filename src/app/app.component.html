@@ -1,20 +1,19 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" [opened]="drawerOpened"  mode="side">
+  <mat-drawer #drawer class="example-sidenav" [opened]="drawerOpened" mode="side">
     <div class="logo-container">
       <img style="width: 250px;" src="/img/crm-logo.png" alt="">
     </div>
 
     <ul>
-      <li routerLink="dashboard"><mat-icon>dashboard</mat-icon>Dashboard</li>
-      <li routerLink="user"><mat-icon>perm_identity</mat-icon>Customer</li>
-      <li routerLink="trainer"><mat-icon>sports_gymnastics</mat-icon>Trainer Work</li>
-      <li routerLink="schedule"><mat-icon>calendar_month</mat-icon>Schedule</li>
-      <li routerLink="imprint"><mat-icon>description</mat-icon>Imprint</li>
+      <li routerLink="dashboard" (click)="closeDrawerOnSmallScreen(drawer)"><mat-icon>dashboard</mat-icon>Dashboard</li>
+      <li routerLink="user" (click)="closeDrawerOnSmallScreen(drawer)"><mat-icon>perm_identity</mat-icon>Customer</li>
+      <li routerLink="trainer" (click)="closeDrawerOnSmallScreen(drawer)"><mat-icon>sports_gymnastics</mat-icon>Trainer Work</li>
+      <li routerLink="schedule" (click)="closeDrawerOnSmallScreen(drawer)"><mat-icon>calendar_month</mat-icon>Schedule</li>
+      <li routerLink="imprint" (click)="closeDrawerOnSmallScreen(drawer)"><mat-icon>description</mat-icon>Imprint</li>
     </ul>
   </mat-drawer>
 
   <div class="example-sidenav-content">
-
     <mat-toolbar>
       <mat-toolbar-row class="matToolbar">
         <mat-icon class="burgerMenu" (click)="drawer.toggle()">menu</mat-icon>
@@ -25,7 +24,5 @@
     <div class="router-container">
       <router-outlet></router-outlet>
     </div>
-    
-
   </div>
 </mat-drawer-container>

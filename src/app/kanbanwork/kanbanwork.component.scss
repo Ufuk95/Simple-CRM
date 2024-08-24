@@ -35,3 +35,13 @@ div {
     justify-content: space-between;
     align-items: center;
 }
+
+@media (min-width:320px) and (max-width: 535px) {
+    .optionArea {
+        flex-direction: column;
+    }
+
+    .mat-mdc-form-field {
+        width: 100%;
+    }
+}

@@ -111,4 +111,10 @@
         gap: 40px;
         margin-top: 50px;
     }
+    
+}
+@media (min-width: 320px) and (max-width: 433px) {
+    .dayOfTheWeek {
+        flex-direction: column;
+    }
 }

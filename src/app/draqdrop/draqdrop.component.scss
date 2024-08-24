@@ -9,6 +9,7 @@ h2 {
 
 .kanbanContainer {
     display: flex;
+    justify-content: center;
     gap: 20px;
     padding: 8px 20px 8px 20px;
     flex-wrap: wrap;
@@ -107,7 +108,7 @@ h2 {
 
 
 .btn-position {
-    position: absolute;
+    position: fixed;
     bottom: 36px;
     right: 36px;
     border-radius: 30px;

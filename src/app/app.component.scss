@@ -96,3 +96,9 @@ ul {
     box-sizing: border-box;
     color: white;
 }
+
+@media (min-width: 320px) and (max-width: 500px) {
+    .example-sidenav {
+        width: 100vw;
+    }
+}

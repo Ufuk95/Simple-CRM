@@ -24,26 +24,26 @@
                 <div class="infoDiv" *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
                     <div class="userInformation">
                         <div class="noUser">
-                            <th>Name:</th>
+                            <th class="userFont">Name:</th>
                         </div>
                         <div>
-                            <td>{{ user.firstName }}  {{ user.lastName }}</td>
+                            <td class="userFont">{{ user.firstName }}  {{ user.lastName }}</td>
                         </div>
                     </div>
                     <div class="userInformation">
                         <div class="noUser">
-                            <th>E-mail:</th>
+                            <th class="userFont">E-mail:</th>
                         </div>
                         <div>
-                            <td>{{ user.email }}</td>
+                            <td class="userFont">{{ user.email }}</td>
                         </div>
                     </div>
                     <div class="userInformation">
                         <div class="noUser">
-                            <th>City:</th>
+                            <th class="userFont">City:</th>
                         </div>
                         <div>
-                            <td>{{ user.city }}</td>
+                            <td class="userFont">{{ user.city }}</td>
                         </div>
                     </div>
                 </div>

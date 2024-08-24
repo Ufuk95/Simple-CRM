@@ -151,3 +151,25 @@ mat-card-content {
         display: block !important;
     }
 }
+
+@media (min-width: 320px) {
+    .userFont {
+        font-size: 12px;
+    }
+
+    .responsive-table th:first-child {
+        padding-left: 4px;
+    }
+    .noUser {
+        width: 40px;
+    }
+}
+
+@media (min-width: 350px) {
+    .userFont {
+        font-size: 14px;
+    }
+    .noUser {
+        width: 60px;
+    }
+}

@@ -24,3 +24,13 @@ div {
 .d-flex {
     display: flex;
 }
+
+@media (min-width: 320px) and (max-width: 640px) {
+    .flex-responsive {
+        flex-direction: column;
+    }
+
+    .mat-mdc-dialog-content>:last-child {
+        width: 100%;
+    }
+}

@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -39,5 +39,12 @@ export class AppComponent implements OnInit {
   private checkScreenSize(): void {
     const screenWidth = window.innerWidth;
     this.drawerOpened = screenWidth > 1024; // max width of ipad pro 
+  }
+
+  closeDrawerOnSmallScreen(drawer: MatDrawer): void {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 320 && screenWidth <= 500) {
+      drawer.close();
+    }
   }
 }
