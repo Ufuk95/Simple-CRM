@@ -82,17 +82,16 @@ export class DraqdropComponent implements OnInit {
   }
 
   deleteTask(event: CdkDragDrop<any[]>) {
-    // Überprüfe, ob das Ereignis tatsächlich vom Lösch-Eimer stammt
     if (event.container.id === 'delete-bin') {
       const task = event.previousContainer.data[event.previousIndex];
-
+  
       if (task && task.id) {
         const taskDocRef = doc(this.firestore, `work/${task.id}`);
         deleteDoc(taskDocRef)
           .then(() => {
-            // Entferne die Aufgabe aus der lokalen Liste, um die UI zu aktualisieren
             event.previousContainer.data.splice(event.previousIndex, 1);
             console.log('Task deleted:', task);
+            this.loadUsers();
           })
           .catch(error => {
             console.error('Error deleting task:', error);
@@ -102,6 +101,7 @@ export class DraqdropComponent implements OnInit {
       }
     }
   }
+  
 
 
 

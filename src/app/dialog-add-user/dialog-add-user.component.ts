@@ -36,6 +36,7 @@ export class DialogAddUserComponent {
   user: User = new User();
   birthDate!: Date;
   loading = false;
+  
 
   constructor(public dialog: MatDialogRef<DialogAddUserComponent>) {
 

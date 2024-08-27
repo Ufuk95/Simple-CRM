@@ -2,70 +2,113 @@
     <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <h2 mat-dialog-title>Add user</h2>
 
-    <div class="d-flex flex-responsive">
-        <mat-dialog-content>
-            <mat-form-field appearance="outline">
-                <mat-label>First Name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="1st name">
-            </mat-form-field>
-        </mat-dialog-content>
+    <form (ngSubmit)="saveUser()" #userForm="ngForm">
+        <div class="d-flex flex-responsive">
+            <mat-dialog-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel"
+                        matInput placeholder="1st name" type="text" pattern="^[A-Za-zÀ-ÿ\-']+$" required
+                        [ngClass]="{'invalid': !firstName.valid && firstName.touched, 'valid': firstName.valid && firstName.touched}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!firstName.valid && firstName.touched">Please enter a valid first name</span>
+                </div>
+            </mat-dialog-content>
     
-        <mat-dialog-content>
-            <mat-form-field appearance="outline">
-                <mat-label>Last Name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="2nd name">
-            </mat-form-field>
-        </mat-dialog-content>
-    </div>
+            <mat-dialog-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel"
+                        matInput placeholder="2nd name" type="text" pattern="^[A-Za-zÀ-ÿ\s\-]+$" required
+                        [ngClass]="{'invalid': !lastName.valid && lastName.touched, 'valid': lastName.valid && lastName.touched}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!lastName.valid && lastName.touched">Please enter a valid last name</span>
+                </div>
+            </mat-dialog-content>
+        </div>
+    
+        <div>
+            <mat-dialog-content>
+                <mat-form-field appearance="outline" style="width: 100%">
+                    <mat-label>E-mail</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.email" name="email" #email="ngModel" matInput
+                        placeholder="email address"
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required
+                        [ngClass]="{'invalid': !email.valid && email.touched, 'valid': email.valid && email.touched}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+                </div>
+            </mat-dialog-content>            
+        </div>
+    
+        <div class="d-flex">
+            <mat-dialog-content>
+                <mat-form-field appearance="outline" style="width: 100%">
+                    <mat-label>Birthdate</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="birthDate" name="birthDate" #birthDateModel="ngModel" matInput
+                        placeholder="birthdate" [matDatepicker]="picker" required
+                        [ngClass]="{'invalid': !birthDateModel.valid && birthDateModel.touched, 'valid': birthDateModel.valid && birthDateModel.touched}">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!birthDateModel.valid && birthDateModel.touched">Please enter a valid birthdate MM/DD/YYYY</span>
+                </div>
+            </mat-dialog-content>
+        </div>
+    
+        <div>
+            <mat-dialog-content>
+                <mat-form-field appearance="outline" style="width: 100%">
+                    <mat-label>Address + Nr.</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.street" name="street" #street="ngModel" matInput
+                        placeholder="Placeholder" pattern="^[a-zA-ZäöüÄÖÜß\s]+[0-9]+[a-zA-Z]?$" required
+                        [ngClass]="{'invalid': !street.valid && street.touched, 'valid': street.valid && street.touched}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!street.valid && street.touched">Please enter a valid address</span>
+                </div>
+            </mat-dialog-content>            
+        </div>
+    
+        <div class="d-flex flex-responsive">
+            <mat-dialog-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Zip Code</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.zipCode" name="zipCode" #zipCode="ngModel" matInput
+                        placeholder="Placeholder"  pattern="^[0-9]{5}$" required
+                        [ngClass]="{'invalid': !zipCode.valid && zipCode.touched, 'valid': zipCode.valid && zipCode.touched}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!zipCode.valid && zipCode.touched">Please enter a valid zip code</span>
+                </div>
+            </mat-dialog-content>
+    
+            <mat-dialog-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.city" name="city" #city="ngModel" matInput
+                        placeholder="Placeholder" type="text" pattern="^[A-Za-zÀ-ÿ\s\-]+$" required
+                        [ngClass]="{'invalid': !city.valid && city.touched, 'valid': city.valid && city.touched}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!city.valid && city.touched">Please enter a valid city</span>
+                </div>
+            </mat-dialog-content>
+        </div>
+    
+        <mat-dialog-actions>
+            <button [disabled]="loading" mat-button (click)="this.dialog.close();">Cancel</button>
+            <button [disabled]="loading || !userForm.form.valid" mat-button type="submit" value="submit" cdkFocusInitial
+                [ngClass]="{'valid': userForm.form.valid}">Save</button>
+        </mat-dialog-actions>
+    </form>
+    
+    
 
-    <div>
-        <mat-dialog-content>
-            <mat-form-field appearance="outline" style="width: 100%">
-                <mat-label>E-mail</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="email adress">
-            </mat-form-field>
-        </mat-dialog-content>
-    </div>
-   
-    <div class="d-flex">
-        <mat-dialog-content>
-            <mat-form-field appearance="outline" style="width: 100%">
-                <mat-label>Birthdate</mat-label>
-                <input [disabled]="loading" [(ngModel)]="birthDate" matInput placeholder="birthdate" [matDatepicker]="picker">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-hint>MM/DD/YYYY</mat-hint>
-            </mat-form-field>
-        </mat-dialog-content>
-    </div>
 
-    <div>
-        <mat-dialog-content>
-            <mat-form-field appearance="outline" style="width: 100%">
-                <mat-label>Address + Nr.</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Placeholder">
-            </mat-form-field>
-        </mat-dialog-content>
-    </div>
 
-    <div class="d-flex flex-responsive">
-        <mat-dialog-content>
-            <mat-form-field appearance="outline">
-                <mat-label>Zip Code</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Placeholder">
-            </mat-form-field>
-        </mat-dialog-content>
-
-        <mat-dialog-content>
-            <mat-form-field appearance="outline">
-                <mat-label>City</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="Placeholder">
-            </mat-form-field>
-        </mat-dialog-content>
-    </div>
-
-    <mat-dialog-actions>
-        <button [disabled]="loading" mat-button (click)="this.dialog.close();">Cancel</button>
-        <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
-    </mat-dialog-actions>
 </div>
