@@ -59,4 +59,11 @@ button {
     .mat-mdc-dialog-content>:last-child {
         width: 100%;
     }
+
+    .userDiv {
+        height: 80vh;
+    }
+    mat-form-field {
+        width: 100%;
+    }
 }
