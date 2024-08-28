@@ -1,8 +1,8 @@
 <div class="kanbanContainer">
     <div class="kanbanRow">
-        <h2>Ruslan</h2>
-        <div class="kanbanList" cdkDropList id="Ruslan" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="ruslanTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-todo" *ngFor="let task of ruslanTasks" cdkDrag>
+        <h2>Sensei</h2>
+        <div class="kanbanList" cdkDropList id="Sensei" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="senseiTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-todo" *ngFor="let task of senseiTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
                     <h4>{{ task.coach }}</h4>
@@ -13,9 +13,9 @@
     </div>
     
     <div class="kanbanRow">
-        <h2>Mario</h2>
-        <div class="kanbanList" cdkDropList id="Mario" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="marioTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-waiting" *ngFor="let task of marioTasks" cdkDrag>
+        <h2>Professor</h2>
+        <div class="kanbanList" cdkDropList id="Professor" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="professorTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-waiting" *ngFor="let task of professorTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
                     <h4>{{ task.coach }}</h4>
@@ -26,9 +26,9 @@
     </div>
     
     <div class="kanbanRow">
-        <h2>Jean</h2>
-        <div class="kanbanList" cdkDropList id="Jean" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="jeanTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-treat" *ngFor="let task of jeanTasks" cdkDrag>
+        <h2>Shihan</h2>
+        <div class="kanbanList" cdkDropList id="Shihan" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="shihanTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-treat" *ngFor="let task of shihanTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
                     <h4>{{ task.coach }}</h4>
@@ -39,9 +39,9 @@
     </div>
     
     <div class="kanbanRow">
-        <h2>Johann</h2>
-        <div class="kanbanList" cdkDropList id="Johann" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="johannTasks" (cdkDropListDropped)="drop($event)">
-            <div class="kanbanItem bg-done" *ngFor="let task of johannTasks" cdkDrag>
+        <h2>Maestro</h2>
+        <div class="kanbanList" cdkDropList id="Maestro" [cdkDropListConnectedTo]="connectedTo" [cdkDropListData]="maestroTasks" (cdkDropListDropped)="drop($event)">
+            <div class="kanbanItem bg-done" *ngFor="let task of maestroTasks" cdkDrag>
                 <div>
                     <h3>{{ task.martialArt }}</h3>
                     <h4>{{ task.coach }}</h4>

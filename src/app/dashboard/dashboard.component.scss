@@ -47,7 +47,7 @@
 .clock {
     width: 200px;
     height: 200px;
-    border: 10px solid black;
+    border: 10px solid rgba(100, 157, 133, 0.9);
     border-radius: 50%;
     // margin: 50px auto;
 
@@ -71,17 +71,17 @@
     }
 
     .hour-hand {
-        height: 8px;
-        background: black;
+        height: 10px;
+        background: rgb(55, 55, 55);
     }
 
     .minute-hand {
-        height: 6px;
-        background: black;
+        height: 5px;
+        background: rgb(206, 206, 206);
     }
 
     .second-hand {
-        height: 4px;
+        height: 3px;
         background: red;
     }
 }

@@ -28,12 +28,12 @@ export class DraqdropComponent implements OnInit {
   work: KanbanItem = new KanbanItem();
   firestore: Firestore = inject(Firestore);
   works$!: Observable<any[]>;
-  ruslanTasks: KanbanItem[] = [];
-  marioTasks: KanbanItem[] = [];
-  jeanTasks: KanbanItem[] = [];
-  johannTasks: KanbanItem[] = [];
+  senseiTasks: KanbanItem[] = [];
+  professorTasks: KanbanItem[] = [];
+  shihanTasks: KanbanItem[] = [];
+  maestroTasks: KanbanItem[] = [];
 
-  connectedTo = ['Ruslan', 'Mario', 'Jean', 'Johann', 'delete-bin'];
+  connectedTo = ['Sensei', 'Professor', 'Shihan', 'Maestro', 'delete-bin'];
 
   constructor(public dialog: MatDialog) { }
 
@@ -68,10 +68,10 @@ export class DraqdropComponent implements OnInit {
     this.works$ = collectionData(this.getWorkRef(), { idField: 'id' });
     this.works$.subscribe((changes: any) => {
       console.log('Received changes from DB ', changes);
-      this.ruslanTasks = changes.filter((task: KanbanItem) => task.coach === 'Ruslan');
-      this.marioTasks = changes.filter((task: KanbanItem) => task.coach === 'Mario');
-      this.jeanTasks = changes.filter((task: KanbanItem) => task.coach === 'Jean');
-      this.johannTasks = changes.filter((task: KanbanItem) => task.coach === 'Johann');
+      this.senseiTasks = changes.filter((task: KanbanItem) => task.coach === 'Sensei');
+      this.professorTasks = changes.filter((task: KanbanItem) => task.coach === 'Professor');
+      this.shihanTasks = changes.filter((task: KanbanItem) => task.coach === 'Shihan');
+      this.maestroTasks = changes.filter((task: KanbanItem) => task.coach === 'Maestro');
 
     });
   }

@@ -1,34 +1,51 @@
 <div>
     <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <h2 mat-dialog-title>Edit address</h2>
-   
-    <div>
-        <mat-dialog-content>
-            <mat-form-field appearance="outline" style="width: 100%">
-                <mat-label>Address + Nr.</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Placeholder">
-            </mat-form-field>
-        </mat-dialog-content>
-    </div>
 
-    <div class="d-flex">
-        <mat-dialog-content>
-            <mat-form-field appearance="outline">
-                <mat-label>Zip Code</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Placeholder">
-            </mat-form-field>
-        </mat-dialog-content>
+    <form #editAddressForm="ngForm" (ngSubmit)="saveUser()" #userForm="ngForm">
+        <div>
+            <mat-dialog-content>
+                <mat-form-field appearance="outline" style="width: 100%">
+                    <mat-label>Address + Nr.</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.street" name="street" #street="ngModel"
+                        matInput placeholder="Placeholder" pattern="^[a-zA-ZäöüÄÖÜß\s]+[0-9]+[a-zA-Z]?$" required
+                        [ngClass]="{'invalid': !street.valid && (street.touched || editAddressForm.submitted), 'valid': street.valid && (street.touched || editAddressForm.submitted)}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!street.valid && (street.touched || editAddressForm.submitted)">Please enter a valid address</span>
+                </div>
+            </mat-dialog-content>
+        </div>
 
-        <mat-dialog-content>
-            <mat-form-field appearance="outline">
-                <mat-label>City</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="Placeholder">
-            </mat-form-field>
-        </mat-dialog-content>
-    </div>
+        <div class="d-flex">
+            <mat-dialog-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Zip Code</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.zipCode" name="zipCode" #zipCode="ngModel"
+                        matInput placeholder="Placeholder" pattern="^[0-9]{5}$" required
+                        [ngClass]="{'invalid': !zipCode.valid && (zipCode.touched || editAddressForm.submitted), 'valid': zipCode.valid && (zipCode.touched || editAddressForm.submitted)}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!zipCode.valid && (zipCode.touched || editAddressForm.submitted)">Please enter a valid zip code</span>
+                </div>
+            </mat-dialog-content>
 
-    <mat-dialog-actions>
-        <button [disabled]="loading" mat-button (click)="this.dialog.close();">Cancel</button>
-        <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
-    </mat-dialog-actions>
+            <mat-dialog-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.city" name="city" #city="ngModel"
+                        matInput placeholder="Placeholder" pattern="^[A-Za-zÀ-ÿ\s\-]+$" required
+                        [ngClass]="{'invalid': !city.valid && (city.touched || editAddressForm.submitted), 'valid': city.valid && (city.touched || editAddressForm.submitted)}">
+                </mat-form-field>
+                <div class="warnMessage">
+                    <span *ngIf="!city.valid && (city.touched || editAddressForm.submitted)">Please enter a valid city</span>
+                </div>
+            </mat-dialog-content>
+        </div>
+
+        <mat-dialog-actions>
+            <button [disabled]="loading" mat-button (click)="this.dialog.close();">Cancel</button>
+            <button [disabled]="loading || !editAddressForm.form.valid" mat-button type="submit" cdkFocusInitial>Save</button>
+        </mat-dialog-actions>
+    </form>
 </div>
