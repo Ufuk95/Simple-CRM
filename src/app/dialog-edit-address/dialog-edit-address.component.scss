@@ -33,3 +33,13 @@ button {
         background-color: grey;
     }
 }
+
+.warnMessage {
+    position: relative;
+
+    span {
+        color: #ba1a1a;
+        position: absolute;
+        bottom: -5px;
+    }
+}

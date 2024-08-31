@@ -44,23 +44,6 @@
             </mat-dialog-content>
         </div>
 
-        <div class="d-flex">
-            <mat-dialog-content>
-                <mat-form-field appearance="outline" style="width: 100%">
-                    <mat-label>Birthdate</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="birthDate" name="birthDate" #birthDateModel="ngModel"
-                        matInput placeholder="birthdate" [matDatepicker]="picker" required
-                        [ngClass]="{'invalid': !birthDateModel.valid && (birthDateModel.touched || editUserForm.submitted), 'valid': birthDateModel.valid && (birthDateModel.touched || editUserForm.submitted)}">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                </mat-form-field>
-                <div class="warnMessage">
-                    <span *ngIf="!birthDateModel.valid && (birthDateModel.touched || editUserForm.submitted)">Please enter a valid birthdate</span>
-                </div>
-            </mat-dialog-content>
-        </div>
-
         <mat-dialog-actions>
             <button [disabled]="loading" mat-button (click)="this.dialog.close();">Cancel</button>
             <button [disabled]="loading || !editUserForm.form.valid" mat-button type="submit" value="submit" cdkFocusInitial>Save</button>
