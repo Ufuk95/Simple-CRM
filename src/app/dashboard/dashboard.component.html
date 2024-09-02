@@ -1,43 +1,35 @@
 <div class="dashboard">
     <div class="dashboardTop">
-        
-        <div class="infoButton">
-            <button mat-raised-button [matBadge]="customCount" [matBadgeHidden]="customBadgeHidden"
-                (click)="getCustomerCount()">
-                amount of customers
-            </button>
-        
-            <button mat-raised-button [matBadge]="workCount" [matBadgeHidden]="workBadgeHidden" (click)="getWorkCount()">
-                amount of work
-            </button>
-        </div>
+      <div class="infoButton">
+        <button [ngClass]="{'d-none': !showButtons}" mat-raised-button [matBadge]="customCount" [matBadgeHidden]="customBadgeHidden" (click)="getCustomerCount()">
+          amount of customers
+        </button>
+  
+        <button [ngClass]="{'d-none': !showButtons}" mat-raised-button [matBadge]="workCount" [matBadgeHidden]="workBadgeHidden" (click)="getWorkCount()">
+          amount of work
+        </button>
+      </div>
 
-        <mat-card class="demo-inline-calendar-card calender">
-            <mat-calendar [(selected)]="selected"></mat-calendar>
-        </mat-card>
+      <canvas [ngClass]="{'d-none': showButtons}" #barChart></canvas> 
     </div>
-    
-    
+  
     <div class="dashboardBottom">
-        <div class="clock">
-            <div class="clock-face">
-                <div #hourHand class="hand hour-hand"></div>
-                <div #minuteHand class="hand minute-hand"></div>
-                <div #secondHand class="hand second-hand"></div>
-            </div>
+      <div class="clock">
+        <div class="clock-face">
+          <div #hourHand class="hand hour-hand"></div>
+          <div #minuteHand class="hand minute-hand"></div>
+          <div #secondHand class="hand second-hand"></div>
         </div>
-        
-        
-        <div class="trainingDay">
-            <div class="dayOfTheWeek">
-                <h3>Today is: </h3> <h3 style="color: goldenrod;">{{ today }}</h3>
-            </div>
-            <div class="dayOfTheWeek">
-                <h4>Training:</h4> <h4 style="color: goldenrod;">{{ training }}</h4>
-            </div>
-            
+      </div>
+  
+      <div class="trainingDay">
+        <div class="dayOfTheWeek">
+          <h3>Today is: </h3> <h3 style="color: goldenrod;">{{ today }}</h3>
         </div>
+        <div class="dayOfTheWeek">
+          <h4>Training:</h4> <h4 style="color: goldenrod;">{{ training }}</h4>
+        </div>
+      </div>
     </div>
-    
-</div>
-
+  </div>
+  
